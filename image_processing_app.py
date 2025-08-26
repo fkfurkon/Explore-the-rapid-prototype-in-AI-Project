@@ -1,4 +1,4 @@
-import streamlit as st
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            import streamlit as st
 import cv2
 import numpy as np
 from PIL import Image
@@ -139,7 +139,7 @@ with col1:
             image = load_image_from_url(url)
     
     if image is not None:
-        st.image(image, caption="Original Image", use_column_width=True)
+        st.image(image, caption="Original Image", use_container_width=True)
 
 # Sidebar controls สำหรับ image processing
 if image is not None:
@@ -178,7 +178,7 @@ with col2:
         )
         
         # แสดงภาพที่ประมวลผลแล้ว
-        st.image(processed_image, caption="Processed Image", use_column_width=True)
+        st.image(processed_image, caption="Processed Image", use_container_width=True)
         
         # ปุ่มสำหรับดาวน์โหลดภาพ
         processed_pil = Image.fromarray(processed_image)
