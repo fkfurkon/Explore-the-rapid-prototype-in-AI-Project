@@ -79,36 +79,69 @@ def calculate_image_stats(image):
         # สำหรับภาพสี
         stats = {
             'Red Channel': {
-                'Mean': np.mean(img_array[:,:,0]),
-                'Std': np.std(img_array[:,:,0]),
-                'Min': np.min(img_array[:,:,0]),
-                'Max': np.max(img_array[:,:,0])
+                'Mean': float(np.mean(img_array[:,:,0])),
+                'Std': float(np.std(img_array[:,:,0])),
+                'Min': int(np.min(img_array[:,:,0])),
+                'Max': int(np.max(img_array[:,:,0]))
             },
             'Green Channel': {
-                'Mean': np.mean(img_array[:,:,1]),
-                'Std': np.std(img_array[:,:,1]),
-                'Min': np.min(img_array[:,:,1]),
-                'Max': np.max(img_array[:,:,1])
+                'Mean': float(np.mean(img_array[:,:,1])),
+                'Std': float(np.std(img_array[:,:,1])),
+                'Min': int(np.min(img_array[:,:,1])),
+                'Max': int(np.max(img_array[:,:,1]))
             },
             'Blue Channel': {
-                'Mean': np.mean(img_array[:,:,2]),
-                'Std': np.std(img_array[:,:,2]),
-                'Min': np.min(img_array[:,:,2]),
-                'Max': np.max(img_array[:,:,2])
+                'Mean': float(np.mean(img_array[:,:,2])),
+                'Std': float(np.std(img_array[:,:,2])),
+                'Min': int(np.min(img_array[:,:,2])),
+                'Max': int(np.max(img_array[:,:,2]))
             }
         }
     else:
         # สำหรับภาพเทา
         stats = {
             'Grayscale': {
-                'Mean': np.mean(img_array),
-                'Std': np.std(img_array),
-                'Min': np.min(img_array),
-                'Max': np.max(img_array)
+                'Mean': float(np.mean(img_array)),
+                'Std': float(np.std(img_array)),
+                'Min': int(np.min(img_array)),
+                'Max': int(np.max(img_array))
             }
         }
     
     return stats
+
+# ฟังก์ชันสำหรับแสดงสถิติแบบสวยงาม
+def display_statistics(stats, title):
+    st.write(f"**{title}:**")
+    
+    # สร้างตารางสวยงาม
+    if len(stats) == 3:  # ภาพสี
+        for channel, values in stats.items():
+            st.write(f"**{channel}:**")
+            col_mean, col_std, col_min, col_max = st.columns(4)
+            
+            with col_mean:
+                st.metric("Mean", f"{values['Mean']:.2f}")
+            with col_std:
+                st.metric("Std Dev", f"{values['Std']:.2f}")
+            with col_min:
+                st.metric("Min", f"{values['Min']}")
+            with col_max:
+                st.metric("Max", f"{values['Max']}")
+            st.markdown("---")
+    else:  # ภาพเทา
+        for channel, values in stats.items():
+            st.write(f"**{channel}:**")
+            col_mean, col_std, col_min, col_max = st.columns(4)
+            
+            with col_mean:
+                st.metric("Mean", f"{values['Mean']:.2f}")
+            with col_std:
+                st.metric("Std Dev", f"{values['Std']:.2f}")
+            with col_min:
+                st.metric("Min", f"{values['Min']}")
+            with col_max:
+                st.metric("Max", f"{values['Max']}")
 
 # Main content area
 col1, col2 = st.columns([1, 1])
@@ -278,12 +311,10 @@ if image is not None:
     col5, col6 = st.columns(2)
     
     with col5:
-        st.write("**Original Image:**")
-        st.json(original_stats)
+        display_statistics(original_stats, "Original Image")
     
     with col6:
-        st.write("**Processed Image:**")
-        st.json(processed_stats)
+        display_statistics(processed_stats, "Processed Image")
 
 # Footer
 st.markdown("---")
