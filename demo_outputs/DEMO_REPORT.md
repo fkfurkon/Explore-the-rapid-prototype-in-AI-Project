@@ -26,20 +26,20 @@ Generated on: August 29, 2025
 ### Original Image Statistics:
 
 **Blue Channel:**
-- Mean: 67.09
-- Standard Deviation: 77.04
-- Min: 0.00
-- Max: 255.00
+- Mean: 120.09
+- Standard Deviation: 50.04
+- Min: 1.00
+- Max: 237.00
 
 **Green Channel:**
-- Mean: 119.39
-- Standard Deviation: 86.16
+- Mean: 101.32
+- Standard Deviation: 51.32
 - Min: 0.00
-- Max: 255.00
+- Max: 250.00
 
 **Red Channel:**
-- Mean: 145.66
-- Standard Deviation: 84.56
+- Mean: 100.63
+- Standard Deviation: 62.88
 - Min: 0.00
 - Max: 255.00
 
