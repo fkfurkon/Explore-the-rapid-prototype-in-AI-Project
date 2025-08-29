@@ -176,3 +176,5 @@ Thumbs.db
 # Output files
 outputs/
 results/
+
+demo_output.py
