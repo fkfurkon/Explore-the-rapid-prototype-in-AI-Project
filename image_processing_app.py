@@ -139,7 +139,7 @@ with col1:
             image = load_image_from_url(url)
     
     if image is not None:
-        st.image(image, caption="Original Image", use_container_width=True)
+        st.image(image, caption="Original Image", width='stretch')
 
 # Sidebar controls สำหรับ image processing
 if image is not None:
@@ -178,7 +178,7 @@ with col2:
         )
         
         # แสดงภาพที่ประมวลผลแล้ว
-        st.image(processed_image, caption="Processed Image", use_container_width=True)
+        st.image(processed_image, caption="Processed Image", width='stretch')
         
         # ปุ่มสำหรับดาวน์โหลดภาพ
         processed_pil = Image.fromarray(processed_image)
@@ -240,7 +240,7 @@ if image is not None:
             yaxis_title="Frequency",
             height=400
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
     
     with col4:
         st.subheader("📈 Image Properties Comparison")
@@ -271,7 +271,7 @@ if image is not None:
                         title='Mean Intensity Comparison')
         
         fig.update_layout(height=400)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
     
     # ตารางสถิติ
     st.subheader("📋 Detailed Statistics")
